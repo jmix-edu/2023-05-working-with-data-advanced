@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
         xmlns:c="http://jmix.io/schema/ui/jpql-condition"
-        caption="msg://taskBrowse.caption"
-        focusComponent="tasksTable">
+        caption="msg://employeeBrowse.caption"
+        focusComponent="employeesTable">
     <data readOnly="true">
-        <collection id="tasksDc"
-                    class="com.company.jmixpm.entity.Task">
+        <collection id="employeesDc"
+                    class="com.company.jmixpm.entity.Employee">
             <fetchPlan extends="_base">
-                <property name="assignee" fetchPlan="_base"/>
+                <property name="employeeDetails" fetchPlan="_base"/>
             </fetchPlan>
-            <loader id="tasksDl">
+            <loader id="employeesDl">
                 <query>
-                    <![CDATA[select e from Task_ e]]>
+                    <![CDATA[select e from Employee e]]>
                 </query>
             </loader>
         </collection>
@@ -32,31 +32,31 @@
     </actions>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="tasksTable" spacing="true">
+    <layout expand="employeesTable" spacing="true">
         <filter id="filter"
-                dataLoader="tasksDl">
+                dataLoader="employeesDl">
             <properties include=".*"/>
         </filter>
-        <groupTable id="tasksTable"
+        <groupTable id="employeesTable"
                     width="100%"
-                    dataContainer="tasksDc">
+                    dataContainer="employeesDc">
             <actions>
-<!--                <action id="create" type="create"/>-->
+                <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
-<!--                <action id="remove" type="remove"/>-->
+                <action id="remove" type="remove"/>
             </actions>
             <columns>
                 <column id="name"/>
-                <column id="assignee"/>
-                <column id="startDate"/>
-                <column id="estimatedEfforts"/>
+                <column id="phone"/>
+                <column id="salary"/>
+                <column id="employeeDetails"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-<!--                <button id="createBtn" action="tasksTable.create"/>-->
-                <button id="editBtn" action="tasksTable.edit"/>
-<!--                <button id="removeBtn" action="tasksTable.remove"/>-->
+                <button id="createBtn" action="employeesTable.create"/>
+                <button id="editBtn" action="employeesTable.edit"/>
+                <button id="removeBtn" action="employeesTable.remove"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">
