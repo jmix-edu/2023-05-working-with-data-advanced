@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://workloadScreen.caption">
+    <data>
+        <keyValueCollection id="workloadsDc">
+            <loader id="workloadsDl">
+                <query>
+                    <![CDATA[ select e.assignee, sum(e.estimatedEfforts) from Task_ e
+                    where e.isClosed = false group by e.assignee]]>
+                </query>
+            </loader>
+            <properties>
+                <property name="assignee" class="com.company.jmixpm.entity.User"/>
+                <property name="estimatedEfforts" datatype="int"/>
+            </properties>
+        </keyValueCollection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <layout>
+        <table id="workloadTable" height="100%" width="100%"
+               dataContainer="workloadsDc">
+
+            <actions>
+                <action id="workloadInfo"
+                        caption="Workload Info"
+                        type="itemTracking"/>
+            </actions>
+            <buttonsPanel>
+                <button id="workloadTableWorkloadInfoBtn"
+                        action="workloadTable.workloadInfo"/>
+            </buttonsPanel>
+            <columns>
+                <column id="assignee" caption="msg://workloadTable.assignee"/>
+                <column id="estimatedEfforts" caption="msg://workloadTable.estimatedEfforts"/>
+            </columns>
+        </table>
+    </layout>
+</window>

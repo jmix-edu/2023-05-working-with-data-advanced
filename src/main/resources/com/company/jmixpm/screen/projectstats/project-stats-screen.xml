@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://projectStatsScreen.caption">
+    <data>
+        <collection id="projectStatsesDc" class="com.company.jmixpm.entity.ProjectStats">
+            <fetchPlan extends="_base"/>
+            <loader id="projectStatsesDl"/>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <layout>
+        <table id="projectStatsesTable" height="100%" width="100%"
+               dataContainer="projectStatsesDc">
+            <columns>
+                <column id="projectName"/>
+                <column id="taskCount"/>
+                <column id="plannedEfforts"/>
+                <column id="actualEfforts"/>
+            </columns>
+        </table>
+    </layout>
+</window>

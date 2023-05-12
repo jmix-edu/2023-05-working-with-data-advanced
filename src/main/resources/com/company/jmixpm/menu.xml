@@ -11,6 +11,11 @@
               caption="msg://com.company.jmixpm.screen.employeedetails/employeeDetailsBrowse.menu"/>
         <item screen="Employee.browse" caption="msg://com.company.jmixpm.screen.employee/employeeBrowse.menu"/>
         <item screen="Roadmap.browse" caption="msg://com.company.jmixpm.screen.roadmap/roadmapBrowse.menu"/>
+        <item screen="ProjectStatsScreen"
+              caption="msg://com.company.jmixpm.screen.projectstats/projectStatsScreen.caption"/>
+        <item screen="WorkloadScreen" caption="msg://com.company.jmixpm.screen.workload/workloadScreen.caption"/>
+        <item screen="WorkloadInfoScreen"
+              caption="msg://com.company.jmixpm.screen.workloadinfo/workloadInfoScreen.caption"/>
     </menu>
 
 </menu-config>

@@ -41,22 +41,23 @@
                     width="100%"
                     dataContainer="tasksDc">
             <actions>
-<!--                <action id="create" type="create"/>-->
+                <!--                <action id="create" type="create"/>-->
                 <action id="edit" type="edit"/>
-<!--                <action id="remove" type="remove"/>-->
+                <!--                <action id="remove" type="remove"/>-->
             </actions>
             <columns>
                 <column id="name"/>
                 <column id="assignee"/>
                 <column id="startDate"/>
                 <column id="estimatedEfforts"/>
+                <column id="label"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-<!--                <button id="createBtn" action="tasksTable.create"/>-->
+                <!--                <button id="createBtn" action="tasksTable.create"/>-->
                 <button id="editBtn" action="tasksTable.edit"/>
-<!--                <button id="removeBtn" action="tasksTable.remove"/>-->
+                <!--                <button id="removeBtn" action="tasksTable.remove"/>-->
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

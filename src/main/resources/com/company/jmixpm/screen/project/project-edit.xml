@@ -41,21 +41,21 @@
                         <action id="entityClear" type="entity_clear"/>
                     </actions>
                 </entityPicker>
+                <textArea id="labelsField" property="labels" editable="false"/>
             </column>
         </form>
-
         <tabSheet id="tabSheet" width="100%">
             <tab id="participantsTab" caption="msg://com.company.jmixpm.entity/Project.participants"
                  margin="true, false, false, false"
                  expand="usersTable">
                 <table id="usersTable" width="100%" dataContainer="participantsDc">
                     <actions>
-<!--                        <action id="create" type="create"/>-->
+                        <!--                        <action id="create" type="create"/>-->
                         <action id="add" type="add"/>
                         <action id="exclude" type="exclude"/>
                     </actions>
                     <buttonsPanel alwaysVisible="true">
-<!--                        <button id="usersTableCreateBtn" action="usersTable.create"/>-->
+                        <!--                        <button id="usersTableCreateBtn" action="usersTable.create"/>-->
                         <button id="usersTableAddBtn" action="usersTable.add"/>
                         <button id="usersTableExcludeBtn" action="usersTable.exclude"/>
                     </buttonsPanel>
@@ -67,7 +67,6 @@
                     </columns>
                 </table>
             </tab>
-
             <tab id="tasksTab"
                  caption="msg://com.company.jmixpm.entity/Project.tasks"
                  margin="true, false, false, false"
@@ -91,7 +90,6 @@
                 </table>
             </tab>
         </tabSheet>
-
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
             <button id="closeBtn" action="windowClose"/>
