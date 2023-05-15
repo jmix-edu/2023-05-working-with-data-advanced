@@ -14,10 +14,7 @@ import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
-import java.util.UUID;
+import java.util.*;
 
 @JmixEntity
 @Entity
@@ -68,8 +65,22 @@ public class User implements JmixUserDetails, HasTimeZone {
     @Temporal(TemporalType.TIMESTAMP)
     private Date deletedDate;
 
+    @JoinTable(name = "PROJECT_USER_LINK",
+            joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "ID"),
+            inverseJoinColumns = @JoinColumn(name = "PROJECT_ID", referencedColumnName = "ID"))
+    @ManyToMany
+    private List<Project> projects;
+
     @Transient
     protected Collection<? extends GrantedAuthority> authorities;
+
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
+    }
 
     public Date getDeletedDate() {
         return deletedDate;

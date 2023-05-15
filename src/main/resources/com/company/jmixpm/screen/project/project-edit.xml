@@ -8,6 +8,7 @@
             <fetchPlan extends="_base">
                 <property name="manager" fetchPlan="_base"/>
                 <property name="tasks" fetchPlan="_base"/>
+                <property name="owner" fetchPlan="_base"/>
             </fetchPlan>
             <loader/>
             <collection id="participantsDc" property="participants"/>
@@ -41,7 +42,8 @@
                         <action id="entityClear" type="entity_clear"/>
                     </actions>
                 </entityPicker>
-                <textArea id="labelsField" property="labels" editable="false"/>
+                <field id="labelsField" property="labels" editable="false"/>
+                <entityPicker id="ownerField" property="owner"/>
             </column>
         </form>
         <tabSheet id="tabSheet" width="100%">
@@ -93,6 +95,8 @@
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
             <button id="closeBtn" action="windowClose"/>
+            <button id="commitWithBeanValidationBtn" caption="Commit With Bean Validation"/>
+            <button id="performBeanValidationBtn" caption="Perform Bean Validation"/>
         </hbox>
     </layout>
 </window>

@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
-        caption="msg://taskEdit.caption"
+        caption="msg://customerEdit.caption"
         focusComponent="form">
     <data>
-        <instance id="taskDc"
-                  class="com.company.jmixpm.entity.Task">
-            <fetchPlan extends="_base">
-                <property name="assignee" fetchPlan="_base"/>
-            </fetchPlan>
+        <instance id="customerDc"
+                  class="com.company.jmixpm.entity.Customer">
+            <fetchPlan extends="_base"/>
             <loader/>
         </instance>
     </data>
@@ -27,20 +25,11 @@
     <dialogMode height="600"
                 width="800"/>
     <layout spacing="true" expand="editActions">
-        <form id="form" dataContainer="taskDc">
+        <form id="form" dataContainer="customerDc">
             <column width="350px">
-                <textField id="nameField" property="name"/>
-                <entityPicker id="assigneeField" property="assignee">
-                    <actions>
-                        <action id="entityLookup" type="entity_lookup"/>
-                        <action id="entityClear" type="entity_clear"/>
-                    </actions>
-                </entityPicker>
-                <dateField id="startDateField" property="startDate"/>
-                <textField id="estimatedEffortsField" property="estimatedEfforts"/>
-                <comboBox id="labelField" property="label"/>
-
-                <field property="project.labels"/>
+                <textField id="firstNameField" property="firstName"/>
+                <textField id="lastNameField" property="lastName"/>
+                <textField id="emailField" property="email"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

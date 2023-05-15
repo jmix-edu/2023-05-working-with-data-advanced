@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
-        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
         caption="msg://taskBrowse.caption"
         focusComponent="tasksTable">
     <data readOnly="true">
@@ -41,9 +40,9 @@
                     width="100%"
                     dataContainer="tasksDc">
             <actions>
-                <!--                <action id="create" type="create"/>-->
+<!--                <action id="create" type="create"/>-->
                 <action id="edit" type="edit"/>
-                <!--                <action id="remove" type="remove"/>-->
+<!--                <action id="remove" type="remove"/>-->
             </actions>
             <columns>
                 <column id="name"/>
@@ -51,13 +50,14 @@
                 <column id="startDate"/>
                 <column id="estimatedEfforts"/>
                 <column id="label"/>
+                <column id="supposedEndDate"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <!--                <button id="createBtn" action="tasksTable.create"/>-->
+<!--                <button id="createBtn" action="tasksTable.create"/>-->
                 <button id="editBtn" action="tasksTable.edit"/>
-                <!--                <button id="removeBtn" action="tasksTable.remove"/>-->
+<!--                <button id="removeBtn" action="tasksTable.remove"/>-->
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">
