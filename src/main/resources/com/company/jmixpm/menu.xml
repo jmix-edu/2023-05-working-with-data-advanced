@@ -16,12 +16,19 @@
         <item screen="WorkloadScreen" caption="msg://com.company.jmixpm.screen.workload/workloadScreen.caption"/>
         <item screen="WorkloadInfoScreen"
               caption="msg://com.company.jmixpm.screen.workloadinfo/workloadInfoScreen.caption"/>
+        <item screen="SandboxScreen" caption="msg://com.company.jmixpm.screen.sandbox/sandboxScreen.caption"/>
+        <item screen="TaskEntityLogBrowse"
+              caption="msg://com.company.jmixpm.screen.taskentitylogbrowse/taskEntityLogBrowse.caption"/>
+        <item screen="ProjectSnapshotBrowse"
+              caption="msg://com.company.jmixpm.screen.projectsnapshotbrowse/projectSnapshotBrowse.caption"/>
     </menu>
     <menu id="customers" caption="msg://com.company.jmixpm/menu_config.customers" insertBefore="administration">
         <item screen="Customer.browse" caption="msg://com.company.jmixpm.screen.customer/customerBrowse.menu"/>
         <item screen="Order_.browse" caption="msg://com.company.jmixpm.screen.order/orderBrowse.menu"/>
         <item screen="CustomerSearchScreen"
               caption="msg://com.company.jmixpm.screen.customersearch/customerSearchScreen.caption"/>
+        <item screen="CustomerSubstringSearchScreen"
+              caption="msg://com.company.jmixpm.screen.customersubstringsearch/customerSubstringSearchScreen.caption"/>
     </menu>
 
 </menu-config>

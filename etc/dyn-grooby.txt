@@ -1,0 +1,10 @@
+import io.jmix.core.entity.EntityValues;
+
+if (EntityValues.getValue(entity, '+TasknotestProjectpart').equals('Frontend')) {
+    return ['Web components', "Validation", "CSS"]
+} else if (EntityValues.getValue(entity, '+TasknotestProjectpart').equals('Backend')) {
+    return ['Database', "Performance", "API"]
+} else {
+    return []
+}
+

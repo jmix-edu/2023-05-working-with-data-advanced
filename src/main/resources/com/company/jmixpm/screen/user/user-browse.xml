@@ -6,7 +6,7 @@
         <collection id="usersDc"
                     class="com.company.jmixpm.entity.User">
             <fetchPlan extends="_base"/>
-            <loader id="usersDl">
+            <loader id="usersDl" cacheable="true">
                 <query>
                     <![CDATA[select e from User e order by e.username]]>
                 </query>
@@ -25,15 +25,15 @@
     </actions>
     <facets>
         <dataLoadCoordinator auto="true"/>
-        <screenSettings auto="true"/>
-        <presentations auto="true"/>
+<!--        <screenSettings auto="true"/>-->
+<!--        <presentations auto="true"/>-->
     </facets>
     <dialogMode height="600"
                 width="800"/>
     <layout spacing="true" expand="usersTable">
-        <filter id="filter" dataLoader="usersDl">
+        <!--<filter id="filter" dataLoader="usersDl">
             <properties include=".*"/>
-        </filter>
+        </filter>-->
         <groupTable id="usersTable"
                     width="100%"
                     dataContainer="usersDc"
@@ -47,6 +47,7 @@
                 <action id="changePassword" type="changePassword"/>
                 <action id="resetPassword" type="resetPassword"/>
                 <action id="resetRememberMeToken" type="resetRememberMeToken"/>
+                <action id="showUserProjects" type="itemTracking" caption="Show User Projects"/>
             </actions>
             <columns>
                 <column id="username"/>
@@ -71,6 +72,7 @@
                         <action id="usersTable.showUserSubstitutions"/>
                     </actions>
                 </popupButton>
+                <button id="usersTableItemTrackingBtn" action="usersTable.showUserProjects"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

@@ -4,6 +4,9 @@ import com.company.jmixpm.entity.Project;
 import com.company.jmixpm.entity.ProjectStats;
 import com.company.jmixpm.entity.Task;
 import io.jmix.core.DataManager;
+import io.jmix.core.FetchPlan;
+import io.jmix.core.FetchPlanBuilder;
+import io.jmix.core.FetchPlans;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -14,13 +17,20 @@ import java.util.stream.Collectors;
 public class ProjectStatsService {
 
     private DataManager dataManager;
+    private final FetchPlans fetchPlans;
 
-    public ProjectStatsService(DataManager dataManager) {
+    public ProjectStatsService(DataManager dataManager, FetchPlans fetchPlans) {
         this.dataManager = dataManager;
+        this.fetchPlans = fetchPlans;
     }
 
     public List<ProjectStats> fetchProjectStatistics() {
-        List<Project> projects = dataManager.load(Project.class).all().list();
+        List<Project> projects = dataManager.load(Project.class)
+                .all()
+//                .fetchPlan(createFetchPlanWithTasks())
+                .fetchPlan("project-with-tasks")
+                .list();
+
         return projects.stream()
                 .map(project -> {
                     ProjectStats stats = dataManager.create(ProjectStats.class);
@@ -37,6 +47,18 @@ public class ProjectStatsService {
                     return stats;
                 })
                 .collect(Collectors.toList());
+    }
+
+    private FetchPlan createFetchPlanWithTasks() {
+        FetchPlanBuilder taskFetchPlanBuilder = fetchPlans.builder(Task.class)
+                .add("estimatedEfforts")
+                .add("startDate");
+
+        FetchPlanBuilder projectFetchPlanBuilder = fetchPlans.builder(Project.class)
+                .addFetchPlan(FetchPlan.INSTANCE_NAME)
+                .add("tasks", taskFetchPlanBuilder);
+
+        return projectFetchPlanBuilder.build();
     }
 
     private Integer getActualEfforts(UUID projectId) {

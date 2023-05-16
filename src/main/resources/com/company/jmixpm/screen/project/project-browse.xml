@@ -13,10 +13,12 @@
             <loader id="projectsDl">
                 <query>
                     <![CDATA[select e from Project e]]>
+<!--                    <![CDATA[select e from Project e where function('actual_efforts', e.id) > e.totalEstimatedEfforts ]]>-->
                 </query>
             </loader>
         </collection>
     </data>
+
     <facets>
         <dataLoadCoordinator auto="true"/>
         <screenSettings id="settingsFacet" auto="true"/>
@@ -54,6 +56,7 @@
                 <column id="labels"/>
                 <column id="totalEstimatedEfforts"/>
                 <column id="owner"/>
+                <column id="status"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"

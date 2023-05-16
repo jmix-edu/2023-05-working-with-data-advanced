@@ -3,6 +3,7 @@ package com.company.jmixpm.screen.project;
 import com.company.jmixpm.entity.User;
 import io.jmix.core.DataManager;
 import io.jmix.core.security.CurrentAuthentication;
+import io.jmix.ui.Notifications;
 import io.jmix.ui.component.Button;
 import io.jmix.ui.model.CollectionContainer;
 import io.jmix.ui.screen.*;
@@ -21,6 +22,25 @@ public class ProjectBrowse extends StandardLookup<Project> {
     private DataManager dataManager;
     @Autowired
     private CurrentAuthentication currentAuthentication;
+    @Autowired
+    private Notifications notifications;
+
+    @Subscribe
+    public void onBeforeShow(BeforeShowEvent event) {
+        Integer newProjectsCount = dataManager.loadValue("select count(e) from Project e " +
+                        "where :session_isManager = TRUE " +
+                        "and e.status = @enum(com.company.jmixpm.entity.ProjectStatus.NEW) " +
+                        "and e.manager.id = :current_user_id", Integer.class)
+                .one();
+
+        if (newProjectsCount != 0) {
+            notifications.create()
+                    .withType(Notifications.NotificationType.TRAY)
+                    .withCaption("New Projects")
+                    .withDescription("Projects with NEW status: " + newProjectsCount)
+                    .show();
+        }
+    }
 
     @Subscribe("createProjectBtn")
     public void onCreateProjectBtnClick(Button.ClickEvent event) {

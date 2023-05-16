@@ -44,6 +44,7 @@
                 </entityPicker>
                 <field id="labelsField" property="labels" editable="false"/>
                 <entityPicker id="ownerField" property="owner"/>
+                <comboBox id="statusField" property="status"/>
             </column>
         </form>
         <tabSheet id="tabSheet" width="100%">
